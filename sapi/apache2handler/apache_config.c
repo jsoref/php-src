@@ -56,7 +56,7 @@ typedef struct {
 	char htaccess;
 } php_dir_entry;
 
-static const char *real_value_hnd(cmd_parms *cmd, void *dummy, const char *name, const char *value, int status)
+static const char *real_value_hnd(cmd_params *cmd, void *dummy, const char *name, const char *value, int status)
 {
 	php_conf_rec *d = dummy;
 	php_dir_entry e;
@@ -76,17 +76,17 @@ static const char *real_value_hnd(cmd_parms *cmd, void *dummy, const char *name,
 	return NULL;
 }
 
-static const char *php_apache_value_handler(cmd_parms *cmd, void *dummy, const char *name, const char *value)
+static const char *php_apache_value_handler(cmd_params *cmd, void *dummy, const char *name, const char *value)
 {
 	return real_value_hnd(cmd, dummy, name, value, PHP_INI_PERDIR);
 }
 
-static const char *php_apache_admin_value_handler(cmd_parms *cmd, void *dummy, const char *name, const char *value)
+static const char *php_apache_admin_value_handler(cmd_params *cmd, void *dummy, const char *name, const char *value)
 {
 	return real_value_hnd(cmd, dummy, name, value, PHP_INI_SYSTEM);
 }
 
-static const char *real_flag_hnd(cmd_parms *cmd, void *dummy, const char *arg1, const char *arg2, int status)
+static const char *real_flag_hnd(cmd_params *cmd, void *dummy, const char *arg1, const char *arg2, int status)
 {
 	char bool_val[2];
 
@@ -100,17 +100,17 @@ static const char *real_flag_hnd(cmd_parms *cmd, void *dummy, const char *arg1, 
 	return real_value_hnd(cmd, dummy, arg1, bool_val, status);
 }
 
-static const char *php_apache_flag_handler(cmd_parms *cmd, void *dummy, const char *name, const char *value)
+static const char *php_apache_flag_handler(cmd_params *cmd, void *dummy, const char *name, const char *value)
 {
 	return real_flag_hnd(cmd, dummy, name, value, PHP_INI_PERDIR);
 }
 
-static const char *php_apache_admin_flag_handler(cmd_parms *cmd, void *dummy, const char *name, const char *value)
+static const char *php_apache_admin_flag_handler(cmd_params *cmd, void *dummy, const char *name, const char *value)
 {
 	return real_flag_hnd(cmd, dummy, name, value, PHP_INI_SYSTEM);
 }
 
-static const char *php_apache_phpini_set(cmd_parms *cmd, void *mconfig, const char *arg)
+static const char *php_apache_phpini_set(cmd_params *cmd, void *mconfig, const char *arg)
 {
 	if (apache2_php_ini_path_override) {
 		return "Only first PHPINIDir directive honored per configuration tree - subsequent ones ignored";
