@@ -21,10 +21,10 @@ function manyInits() {
     static $counter=0;
     echo "------------- Call $counter --------------\n";
     static $a, $b=10, $c=20, $d, $e=30;
-    echo "Unitialised      : $a\n";
+    echo "Uninitialized    : $a\n";
     echo "Initialised to 10: $b\n";
     echo "Initialised to 20: $c\n";
-    echo "Unitialised      : $d\n";
+    echo "Uninitialized    : $d\n";
     echo "Initialised to 30: $e\n";
     $a++;
     $b++;
@@ -59,22 +59,22 @@ Same variable used as static and non static.
 
 Lots of initialisations in the same statement.
 ------------- Call 0 --------------
-Unitialised      : 
+Uninitialized    : 
 Initialised to 10: 10
 Initialised to 20: 20
-Unitialised      : 
+Uninitialized    : 
 Initialised to 30: 30
 ------------- Call 1 --------------
-Unitialised      : 1
+Uninitialized    : 1
 Initialised to 10: 11
 Initialised to 20: 21
-Unitialised      : 1
+Uninitialized    : 1
 Initialised to 30: 31
 ------------- Call 2 --------------
-Unitialised      : 2
+Uninitialized    : 2
 Initialised to 10: 12
 Initialised to 20: 22
-Unitialised      : 2
+Uninitialized    : 2
 Initialised to 30: 32
 
 Using static keyword at global scope
